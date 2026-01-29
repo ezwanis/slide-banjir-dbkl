@@ -1,0 +1,2328 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+:root {
+    /* Modern Corporate Color Palette */
+    --primary-dark: #0f172a;
+    --primary-blue: #1e40af;
+    --primary-light: #3b82f6;
+    --accent-teal: #06b6d4;
+    --accent-cyan: #22d3ee;
+    --accent-purple: #8b5cf6;
+    --gradient-start: #1e3a8a;
+    --gradient-mid: #2563eb;
+    --gradient-end: #3b82f6;
+    --card-gradient-start: #f0f9ff;
+    --card-gradient-end: #e0f2fe;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    overflow: hidden;
+    color: #333;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.presentation-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Slide Styles */
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Gradient Background */
+.gradient-bg {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 50%, var(--gradient-end) 100%);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.15), transparent 60%),
+                radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.15), transparent 60%);
+    pointer-events: none;
+}
+
+/* Slide 1: Title Slide */
+.title-slide-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.logo-section {
+    margin-bottom: 2rem;
+}
+
+.dbkl-logo {
+    width: auto;
+    height: 180px;
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+    animation: fadeInScale 1s ease-out, logoFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 30px rgba(34, 211, 238, 0.2));
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.logo-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 2.5rem;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    animation: fadeInScale 1s ease-out;
+}
+
+.main-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(34, 211, 238, 0.3);
+    animation: slideInFromTop 1s ease-out, textGlow 3s infinite;
+    letter-spacing: 2px;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(34, 211, 238, 0.3);
+    }
+    50% {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 60px rgba(34, 211, 238, 0.5);
+    }
+}
+
+.title-divider {
+    width: 300px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), white, var(--accent-purple), transparent);
+    margin: 2rem auto;
+    animation: expandWidth 1s ease-out, shimmer 3s infinite;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+    border-radius: 2px;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.sub-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    animation: slideInFromBottom 1s ease-out;
+    opacity: 0.95;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.date-info {
+    margin-top: 3rem;
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* Slide Header */
+.slide-header {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--accent-cyan));
+    color: white;
+    padding: 1.2rem 3rem;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.slide-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100px;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1));
+    transform: skewX(-20deg);
+}
+
+.slide-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Slide Content */
+.slide-content {
+    flex: 1;
+    padding: 1.2rem 3rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+/* Specific adjustment for Slide 2 (Objektif) */
+.slide[data-slide="2"] .slide-content {
+    padding: 1rem 3rem;
+    justify-content: center;
+}
+
+/* Specific adjustment for Slide 3 (Pernyataan Masalah) */
+.slide[data-slide="3"] .slide-content {
+    padding: 1rem 3rem;
+}
+
+/* Specific adjustment for Slide 4 (Penyelesaian) */
+.slide[data-slide="4"] .slide-content {
+    padding: 1rem 3rem;
+    justify-content: center;
+}
+
+/* Specific adjustment for Slide 5 (Komponen Sistem) */
+.slide[data-slide="5"] .slide-content {
+    padding: 0.8rem 3rem;
+    justify-content: center;
+}
+
+.slide[data-slide="5"] .component-container {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+/* Specific adjustment for Slide 7 (Timeline) */
+.slide[data-slide="7"] .slide-content {
+    padding: 1rem 3rem;
+    justify-content: center;
+}
+
+/* Slide 2: Objektif - Content Cards */
+.content-card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--card-gradient-start) 0%, var(--card-gradient-end) 100%);
+    border-left: 5px solid var(--accent-cyan);
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-card:last-child {
+    margin-bottom: 0;
+}
+
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+}
+
+.content-card:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.3);
+}
+
+.icon-wrapper {
+    margin-right: 1.5rem;
+}
+
+.icon {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-cyan));
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover .icon {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.card-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Slide 3: Problem Container */
+.problem-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.problem-box {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 3px solid #ef4444;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.problem-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.05), transparent 70%);
+    pointer-events: none;
+}
+
+.problem-icon {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.problem-box h3 {
+    font-size: 1.8rem;
+    color: #dc2626;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.problem-list {
+    list-style: none;
+    padding: 0;
+}
+
+.problem-list li {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    padding: 0.7rem 0;
+    padding-left: 2.5rem;
+    position: relative;
+    color: #333;
+}
+
+.problem-list li:before {
+    content: "▸";
+    color: #ef4444;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Slide 4: Solution Grid */
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    height: auto;
+    align-items: start;
+}
+
+.solution-card {
+    background: linear-gradient(135deg, var(--card-gradient-start) 0%, #dbeafe 50%, #bfdbfe 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid var(--primary-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.solution-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.1), transparent 70%);
+    transition: transform 0.6s ease;
+}
+
+.solution-card:hover::before {
+    transform: rotate(180deg);
+}
+
+.solution-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.35);
+    border-color: var(--accent-cyan);
+}
+
+.solution-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.3;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.solution-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+}
+
+.solution-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #334155;
+    position: relative;
+    z-index: 1;
+}
+
+/* Slide 5: Component Container */
+.component-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    height: 100%;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.component-item {
+    background: linear-gradient(to right, white, var(--card-gradient-start));
+    border-radius: 12px;
+    padding: 0.9rem 1.5rem;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
+    border-left: 5px solid transparent;
+    border-image: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple)) 1;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.component-item:last-child {
+    margin-bottom: 0;
+}
+
+.component-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--primary-light), var(--accent-purple));
+    border-radius: 20px 0 0 20px;
+}
+
+.component-item:hover {
+    transform: translateX(15px);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+}
+
+.component-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+}
+
+.component-icon {
+    font-size: 1.7rem;
+    margin-right: 0.8rem;
+    background: linear-gradient(135deg, var(--gradient-mid), var(--accent-cyan));
+    color: white;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(34, 211, 238, 0.4);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.component-item:hover .component-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.component-header h3 {
+    font-size: 1.25rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.component-list {
+    list-style: none;
+    padding-left: 2rem;
+    margin: 0;
+}
+
+.component-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.25rem 0;
+    position: relative;
+    color: #555;
+}
+
+.component-list li:before {
+    content: "✓";
+    color: #10b981;
+    font-weight: bold;
+    position: absolute;
+    left: -1.6rem;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Slide 6: Flow System - Fit All in One Page */
+.flow-container {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flow-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Hide scroll arrows - not needed */
+.flow-scroll-btn {
+    display: none;
+}
+
+.flow-step {
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
+    border-radius: 15px;
+    padding: 1.2rem 1rem;
+    width: 180px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid var(--primary-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.flow-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(139, 92, 246, 0.1));
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.flow-step:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.35);
+    border-color: var(--accent-cyan);
+}
+
+.flow-step:hover .flow-icon {
+    transform: scale(1.15);
+}
+
+.flow-step:hover::before {
+    opacity: 1;
+}
+
+.flow-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.flow-step h3 {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.4rem;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    line-height: 1.2;
+}
+
+.flow-step p {
+    font-size: 0.85rem;
+    color: #475569;
+    text-align: center;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: var(--accent-cyan);
+    animation: arrowPulseHorizontal 2s infinite;
+    text-shadow: 0 4px 15px rgba(34, 211, 238, 0.5);
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+@keyframes arrowPulseHorizontal {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(8px);
+        opacity: 0.7;
+    }
+}
+
+/* Slide 7: Timeline */
+.timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 200px 50px 1fr;
+    margin-bottom: 1.3rem;
+    align-items: start;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-date {
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.date-box {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gradient-mid), var(--accent-cyan));
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.date-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+}
+
+.timeline-item:hover .date-box {
+    transform: scale(1.05);
+}
+
+.timeline-connector {
+    position: relative;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.timeline-connector::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 0 0 4px var(--accent-cyan), 0 4px 12px rgba(34, 211, 238, 0.5);
+    z-index: 1;
+    position: relative;
+}
+
+.timeline-connector::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--primary-light), var(--accent-purple));
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+}
+
+.timeline-connector.last::after {
+    display: none;
+}
+
+.timeline-content {
+    background: linear-gradient(135deg, var(--card-gradient-start) 0%, var(--card-gradient-end) 100%);
+    padding: 1.2rem 1.5rem;
+    border-radius: 15px;
+    border-left: 4px solid var(--accent-cyan);
+    box-shadow: 0 6px 20px rgba(34, 211, 238, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+    border-radius: 15px 0 0 15px;
+}
+
+.timeline-content:hover {
+    transform: translateX(15px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(34, 211, 238, 0.25);
+}
+
+.timeline-content h4 {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+}
+
+.timeline-content p {
+    font-size: 1.05rem;
+    color: #64748b;
+}
+
+/* Slide 8: Closing */
+.closing-slide-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.closing-title {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 60px rgba(34, 211, 238, 0.4);
+    animation: fadeInScale 1s ease-out, textGlow 3s infinite;
+    background: linear-gradient(135deg, white, var(--accent-cyan), white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: fadeInScale 1s ease-out, gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.contact-info {
+    margin-top: 3rem;
+}
+
+.contact-info p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    opacity: 0.95;
+}
+
+/* PDF Download Button */
+.pdf-btn {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pdf-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6);
+}
+
+.pdf-btn:active {
+    transform: scale(0.95);
+}
+
+.pdf-btn span {
+    animation: bounce 2s infinite;
+}
+
+/* Navigation Controls */
+.navigation {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 1000;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 64, 175, 0.9));
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 45px;
+    min-width: 200px;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, var(--gradient-mid), var(--accent-cyan));
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(34, 211, 238, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.nav-btn:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(34, 211, 238, 0.6);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.nav-btn:disabled {
+    background: linear-gradient(135deg, #64748b, #475569);
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.slide-indicator {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    flex: 1;
+}
+
+/* Slide Dots */
+.slide-dots {
+    position: fixed;
+    bottom: 100px;
+    right: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    height: 45px;
+    align-items: center;
+    min-width: 200px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dot:hover {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    transform: scale(1.3);
+    box-shadow: 0 3px 10px rgba(34, 211, 238, 0.5);
+}
+
+.dot.active {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--primary-light));
+    width: 24px;
+    border-radius: 4px;
+    box-shadow: 0 3px 12px rgba(34, 211, 238, 0.6);
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 300px;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.fade-in.delay-2 {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scrollbar Styling - Hidden since we don't want scrolling */
+.slide-content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+.slide-content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Responsive Design */
+
+/* Tablet and Small Laptops (1024px - 1200px) */
+@media (max-width: 1200px) {
+    .main-title {
+        font-size: 3.2rem;
+    }
+    
+    .sub-title {
+        font-size: 2rem;
+    }
+    
+    .dbkl-logo {
+        height: 150px;
+    }
+    
+    .solution-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .problem-box {
+        padding: 2rem;
+    }
+    
+    .problem-list li {
+        font-size: 1.3rem;
+        line-height: 1.8;
+    }
+    
+    .card-text p {
+        font-size: 1.3rem;
+    }
+    
+    .slide-header h2 {
+        font-size: 2.2rem;
+    }
+    
+    .flow-step {
+        width: 160px;
+        height: 180px;
+    }
+    
+    .component-container {
+        gap: 1rem;
+    }
+    
+    .component-item {
+        padding: 1.3rem 1.8rem;
+    }
+    
+    .component-list li {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+}
+
+/* Tablet Portrait (769px - 1024px) */
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 2.8rem;
+    }
+    
+    .sub-title {
+        font-size: 1.6rem;
+    }
+    
+    .dbkl-logo {
+        height: 130px;
+    }
+    
+    .slide-header h2 {
+        font-size: 2rem;
+    }
+    
+    .solution-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .problem-list li {
+        font-size: 1.2rem;
+    }
+    
+    .card-text p {
+        font-size: 1.2rem;
+    }
+    
+    .component-list li {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0.3rem 0;
+    }
+    
+    .component-container {
+        gap: 0.8rem;
+    }
+    
+    .component-item {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .slide[data-slide="5"] .slide-content {
+        padding: 1rem 2rem 1.5rem 2rem;
+    }
+}
+
+/* Mobile and Small Tablets (max 768px) */
+@media (max-width: 768px) {
+    .pdf-btn {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .title-slide-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .logo-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .dbkl-logo {
+        height: 100px;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    .sub-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .title-divider {
+        width: 200px;
+        margin: 1.5rem auto;
+    }
+    
+    .date-info {
+        font-size: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .slide-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .slide-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .slide-content {
+        padding: 1rem 1.5rem;
+        overflow-y: auto;
+    }
+    
+    .problem-box {
+        padding: 1.5rem;
+    }
+    
+    .problem-box h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .problem-list li {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0.7rem 0;
+    }
+    
+    .content-card {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .icon-wrapper {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .icon {
+        font-size: 2.5rem;
+        width: 65px;
+        height: 65px;
+    }
+    
+    .card-text p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .solution-card {
+        padding: 1.5rem;
+    }
+    
+    .solution-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .solution-card p {
+        font-size: 1rem;
+    }
+    
+    .solution-number {
+        font-size: 3rem;
+    }
+    
+    .component-container {
+        gap: 0.8rem;
+        padding: 0.5rem 0;
+    }
+    
+    .component-item {
+        padding: 1rem 1.2rem;
+    }
+    
+    .component-header {
+        margin-bottom: 0.6rem;
+    }
+    
+    .component-header h3 {
+        font-size: 1.15rem;
+    }
+    
+    .component-list {
+        padding-left: 2rem;
+    }
+    
+    .component-list li {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding: 0.3rem 0;
+    }
+    
+    .component-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    .slide[data-slide="5"] .slide-content {
+        padding: 0.8rem 1.5rem 1.5rem 1.5rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-content p {
+        font-size: 1rem;
+    }
+    
+    .closing-slide-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .closing-title {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-info {
+        margin-top: 2rem;
+    }
+    
+    .contact-info p {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+    }
+    
+    .flow-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .flow-wrapper {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .flow-step {
+        width: 90%;
+        max-width: 350px;
+        height: 150px;
+        padding: 1rem;
+    }
+    
+    .flow-step h3 {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .flow-step p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .flow-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .flow-arrow {
+        font-size: 1.8rem;
+        transform: rotate(90deg);
+    }
+    
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .timeline-date {
+        text-align: left;
+        padding-right: 0;
+    }
+    
+    .timeline-connector {
+        display: none;
+    }
+    
+    .navigation {
+        bottom: 20px;
+        right: 20px;
+        padding: 0.5rem 1rem;
+        gap: 0.7rem;
+        height: 40px;
+        min-width: 160px;
+    }
+    
+    .nav-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+    
+    .slide-indicator {
+        font-size: 0.9rem;
+    }
+    
+    .slide-dots {
+        bottom: 75px;
+        right: 20px;
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+        height: 40px;
+        min-width: 160px;
+    }
+    
+    .dot {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .dot.active {
+        width: 20px;
+    }
+}
+
+/* Very Small Mobile Devices (max 480px) */
+@media (max-width: 480px) {
+    .title-slide-content {
+        padding: 1rem 0.8rem;
+    }
+    
+    .logo-section {
+        margin-bottom: 1rem;
+    }
+    
+    .dbkl-logo {
+        height: 70px;
+    }
+    
+    .main-title {
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .sub-title {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+    
+    .title-divider {
+        width: 150px;
+        height: 3px;
+        margin: 1rem auto;
+    }
+    
+    .date-info {
+        font-size: 0.85rem;
+        margin-top: 1.2rem;
+    }
+    
+    .date-info p {
+        margin: 0.4rem 0;
+    }
+    
+    .slide-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .slide-content {
+        padding: 0.8rem 1rem;
+    }
+    
+    .content-card {
+        padding: 1rem;
+    }
+    
+    .icon {
+        font-size: 2rem;
+        width: 55px;
+        height: 55px;
+    }
+    
+    .card-text p {
+        font-size: 0.9rem;
+    }
+    
+    .problem-box {
+        padding: 1.2rem;
+    }
+    
+    .problem-box h3 {
+        font-size: 1.3rem;
+    }
+    
+    .problem-list li {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        padding: 0.5rem 0;
+        padding-left: 2rem;
+    }
+    
+    .solution-card {
+        padding: 1.2rem;
+    }
+    
+    .solution-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .solution-card p {
+        font-size: 0.9rem;
+    }
+    
+    .solution-number {
+        font-size: 2.5rem;
+    }
+    
+    .component-container {
+        gap: 0.6rem;
+        padding: 0.3rem 0;
+    }
+    
+    .component-item {
+        padding: 0.8rem 1rem;
+    }
+    
+    .component-header {
+        margin-bottom: 0.5rem;
+    }
+    
+    .component-header h3 {
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+    
+    .component-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+        margin-right: 0.8rem;
+    }
+    
+    .component-list {
+        padding-left: 1.8rem;
+    }
+    
+    .component-list li {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        padding: 0.25rem 0;
+    }
+    
+    .component-list li:before {
+        left: -1.5rem;
+        font-size: 1rem;
+    }
+    
+    .slide[data-slide="5"] .slide-content {
+        padding: 0.6rem 1rem 1.2rem 1rem;
+    }
+    
+    .flow-step {
+        width: 85%;
+        height: 130px;
+        padding: 0.8rem;
+    }
+    
+    .flow-step h3 {
+        font-size: 0.9rem;
+    }
+    
+    .flow-step p {
+        font-size: 0.75rem;
+    }
+    
+    .flow-icon {
+        font-size: 1.5rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+    
+    .date-box {
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+    }
+    
+    .closing-slide-content {
+        padding: 1rem 0.8rem;
+    }
+    
+    .closing-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-info {
+        margin-top: 1.5rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.95rem;
+        margin: 0.6rem 0;
+    }
+    
+    .pdf-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        top: 12px;
+        right: 12px;
+    }
+}
+
+/* Print Styles for PDF Export - COMPLETE CONTENT CAPTURE */
+@media print {
+    /* Hide navigation elements */
+    .navigation,
+    .slide-dots,
+    .pdf-btn {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* Reset body - prevent extra pages */
+    body {
+        overflow: hidden !important;
+        background: white !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+    }
+    
+    /* Prevent HTML element from creating extra pages */
+    html {
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Container adjustments - prevent extra pages */
+    .presentation-container {
+        overflow: hidden !important;
+        height: auto !important;
+        position: relative !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+    }
+    
+    /* Slide styles for printing - EXACTLY 8 PAGES */
+    .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        page-break-after: always !important;
+        page-break-before: avoid !important;
+        page-break-inside: avoid !important;
+        width: 100% !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        background: white !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Last slide - NO page break after */
+    .slide:last-child {
+        page-break-after: avoid !important;
+    }
+    
+    /* First slide - NO page break before */
+    .slide:first-child {
+        page-break-before: avoid !important;
+    }
+    
+    /* Ensure all elements visible - NO EXCEPTIONS */
+    .slide * {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* FORCE ALL ANIMATED ELEMENTS TO FINAL STATE */
+    
+    /* Remove ALL animations and transitions */
+    .slide *,
+    .slide *::before,
+    .slide *::after {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+    
+    /* Content cards (Slide 2, 3) - FULLY VISIBLE */
+    .content-card,
+    .fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        animation: none !important;
+        visibility: visible !important;
+        display: flex !important;
+        page-break-inside: avoid !important;
+    }
+    
+    .content-card {
+        margin-bottom: 0.8rem !important;
+        padding: 1.2rem !important;
+    }
+    
+    .content-card:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    /* Solution cards (Slide 4) - FULLY VISIBLE */
+    .solution-card {
+        opacity: 1 !important;
+        transform: scale(1) translateY(0) !important;
+        animation: none !important;
+        visibility: visible !important;
+        display: flex !important;
+    }
+    
+    /* Component items (Slide 5) - FULLY VISIBLE */
+    .component-item {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        animation: none !important;
+        visibility: visible !important;
+        display: flex !important;
+    }
+    
+    /* Flow steps (Slide 6) - FULLY VISIBLE & COMPRESSED FOR PRINT */
+    .flow-step {
+        opacity: 1 !important;
+        transform: translateX(0) translateY(0) scale(1) !important;
+        animation: none !important;
+        visibility: visible !important;
+        display: flex !important;
+        /* COMPRESS for print to fit all 5 steps in one line */
+        width: 150px !important;
+        min-width: 150px !important;
+        max-width: 150px !important;
+        height: 160px !important;
+        min-height: 160px !important;
+        max-height: 160px !important;
+        padding: 0.8rem 0.6rem !important;
+        flex-shrink: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Flow step text - smaller for print */
+    .flow-step h3 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.3rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .flow-step p {
+        font-size: 0.7rem !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+    }
+    
+    /* Flow icon - smaller for print */
+    .flow-icon {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    /* Flow container - HORIZONTAL LINE NO WRAP */
+    .flow-container {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        overflow: hidden !important;
+        max-height: 100% !important;
+        page-break-inside: avoid !important;
+        padding: 1rem 0.5rem !important;
+    }
+    
+    /* Flow wrapper - single horizontal line */
+    .flow-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Flow arrows - FULLY VISIBLE & SMALLER FOR PRINT */
+    .flow-arrow {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        visibility: visible !important;
+        display: flex !important;
+        font-size: 1.5rem !important;
+        flex-shrink: 0 !important;
+        width: auto !important;
+        min-width: 20px !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    /* Timeline items (Slide 7) - FULLY VISIBLE */
+    .timeline-item {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+        animation: none !important;
+        visibility: visible !important;
+        display: flex !important;
+        transition: none !important;
+    }
+    
+    /* Timeline bars - FULL WIDTH */
+    .timeline-bar {
+        opacity: 1 !important;
+        width: 100% !important;
+        transform: scaleX(1) !important;
+        animation: none !important;
+        visibility: visible !important;
+    }
+    
+    /* Preserve backgrounds and colors */
+    .slide-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%) !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        padding: 1rem 2rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .slide-header h2 {
+        font-size: 2rem !important;
+        margin: 0 !important;
+    }
+    
+    .gradient-bg,
+    .slide-background {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%) !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    .slide-content {
+        background: white !important;
+        overflow: visible !important;
+        max-height: 100% !important;
+        box-sizing: border-box !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+    
+    /* Prevent any element from creating page breaks */
+    .slide-header,
+    .slide-background,
+    .title-slide-content,
+    .content-grid,
+    .solution-grid,
+    .component-container,
+    .flow-container,
+    .timeline-container,
+    .closing-content {
+        page-break-inside: avoid !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+    }
+    
+    /* Slide 2 (Objektif) - ENSURE ALL CONTENT FITS */
+    .slide[data-slide="2"] .slide-content {
+        padding: 0.8rem 2rem !important;
+        overflow: visible !important;
+        justify-content: space-evenly !important;
+    }
+    
+    /* Slide 3 (Pernyataan Masalah) - ENSURE ALL CONTENT FITS */
+    .slide[data-slide="3"] .slide-content {
+        padding: 0.8rem 2rem !important;
+        overflow: visible !important;
+    }
+    
+    .slide[data-slide="3"] .problem-box {
+        padding: 1.5rem !important;
+    }
+    
+    .slide[data-slide="3"] .problem-list li {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        padding: 0.5rem 0 !important;
+    }
+    
+    /* Slide 4 (Penyelesaian) - ENSURE ALL CONTENT FITS */
+    .slide[data-slide="4"] .slide-content {
+        padding: 0.8rem 2rem !important;
+        overflow: visible !important;
+    }
+    
+    .slide[data-slide="4"] .solution-grid {
+        gap: 1rem !important;
+    }
+    
+    .slide[data-slide="4"] .solution-card {
+        padding: 1.5rem !important;
+    }
+    
+    /* Slide 5 (Komponen Sistem) - ENSURE ALL CONTENT FITS */
+    .slide[data-slide="5"] .slide-content {
+        padding: 0.6rem 2rem !important;
+        overflow: visible !important;
+        justify-content: space-evenly !important;
+    }
+    
+    .slide[data-slide="5"] .component-container {
+        justify-content: space-between !important;
+        height: auto !important;
+        gap: 0.5rem !important;
+    }
+    
+    .slide[data-slide="5"] .component-item {
+        padding: 0.7rem 1.2rem !important;
+    }
+    
+    .slide[data-slide="5"] .component-list li {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+        padding: 0.2rem 0 !important;
+    }
+    
+    .slide[data-slide="5"] .component-header h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Slide 6 (Aliran Sistem) - ENSURE ALL CONTENT FITS */
+    .slide[data-slide="6"] .slide-content {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0.5rem !important;
+        overflow: hidden !important;
+    }
+    
+    .slide[data-slide="6"] .flow-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    /* Slide 7 (Timeline) - ENSURE ALL CONTENT FITS */
+    .slide[data-slide="7"] .slide-content {
+        padding: 0.8rem 2rem !important;
+        overflow: visible !important;
+        justify-content: center !important;
+    }
+    
+    .slide[data-slide="7"] .timeline-container {
+        padding: 0 !important;
+    }
+    
+    .slide[data-slide="7"] .timeline-item {
+        margin-bottom: 1rem !important;
+    }
+    
+    .slide[data-slide="7"] .timeline-item:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .slide[data-slide="7"] .timeline-content {
+        padding: 1rem 1.2rem !important;
+    }
+    
+    .slide[data-slide="7"] .timeline-content h4 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .slide[data-slide="7"] .timeline-content p {
+        font-size: 0.95rem !important;
+    }
+    
+    /* Problem box (Slide 3) - preserve styling */
+    .problem-box {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%) !important;
+        border: 3px solid #ef4444 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        page-break-inside: avoid !important;
+    }
+    
+    .problem-box h3 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+    
+    .problem-icon {
+        font-size: 3rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Content cards (Slide 2) - preserve styling */
+    .icon {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 2.2rem !important;
+    }
+    
+    .card-text p {
+        font-size: 1.05rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Component items - preserve styling and ensure visibility */
+    .component-item {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+        border: 2px solid #3b82f6 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        page-break-inside: avoid !important;
+        overflow: visible !important;
+    }
+    
+    .component-container {
+        overflow: visible !important;
+    }
+    
+    .component-list li {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        padding: 0.2rem 0 !important;
+    }
+    
+    .component-header h3 {
+        font-size: 1.15rem !important;
+    }
+    
+    .component-icon {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.5rem !important;
+    }
+    
+    /* Flow steps - preserve styling */
+    .flow-step {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+        border: 2px solid #3b82f6 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    /* Solution cards - preserve styling */
+    .solution-card {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+        border: 2px solid #3b82f6 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        page-break-inside: avoid !important;
+    }
+    
+    .solution-card h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .solution-card p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .solution-number {
+        font-size: 3rem !important;
+    }
+    
+    /* Icon colors - preserve gradients */
+    .icon,
+    .component-icon,
+    .flow-icon {
+        background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%) !important;
+        color: white !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        display: flex !important;
+        visibility: visible !important;
+    }
+    
+    /* Flow arrows */
+    .flow-arrow {
+        color: #3b82f6 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+    
+    /* Timeline elements - preserve styling */
+    .date-box {
+        font-size: 1rem !important;
+        padding: 0.7rem 1rem !important;
+        background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%) !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+    
+    .timeline-content {
+        page-break-inside: avoid !important;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.2rem !important;
+    }
+    
+    .timeline-content p {
+        font-size: 1rem !important;
+    }
+    
+    /* Timeline bars - preserve gradient */
+    .timeline-bar {
+        background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%) !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    /* Timeline dots */
+    .timeline-dot {
+        background: #3b82f6 !important;
+        border-color: white !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+    
+    .timeline-connector::before {
+        background: linear-gradient(135deg, #06b6d4, #8b5cf6) !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+    
+    .timeline-connector::after {
+        background: linear-gradient(180deg, #06b6d4, #3b82f6, #8b5cf6) !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+    
+    /* Text colors */
+    h1, h2, h3, h4, h5, h6 {
+        color: #1e3a8a !important;
+        print-color-adjust: exact !important;
+    }
+    
+    /* Lists and text */
+    ul, ol, li, p {
+        color: #1e293b !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Icons should be visible */
+    .icon-wrapper {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Card content fully visible */
+    .card-text,
+    .card-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Logo */
+    .dbkl-logo,
+    .logo-section img {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+    }
+    
+    /* Title slide elements */
+    .main-title {
+        font-size: 3.5rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .sub-title {
+        font-size: 2rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .title-divider {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        width: 250px !important;
+        margin: 1.5rem auto !important;
+    }
+    
+    .date-info {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin-top: 2rem !important;
+        font-size: 1.2rem !important;
+    }
+    
+    .dbkl-logo {
+        height: 150px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .logo-section {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    /* Closing slide */
+    .closing-slide-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .closing-title {
+        font-size: 4rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .contact-info {
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-top: 2rem !important;
+    }
+    
+    .contact-info p {
+        font-size: 1.3rem !important;
+        margin: 0.8rem 0 !important;
+    }
+    
+    /* Ensure proper sizing - EXACTLY 8 PAGES */
+    @page {
+        size: A4 landscape;
+        margin: 0;
+    }
+    
+    /* Prevent orphans and widows creating extra pages */
+    * {
+        orphans: 1 !important;
+        widows: 1 !important;
+    }
+}

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Amaran Banjir - Pay@KL</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- HTML2PDF Library - Multiple CDN sources for reliability -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" 
+            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+    <!-- Fallback CDN -->
+    <script>
+        if (typeof html2pdf === 'undefined') {
+            document.write('<script src="https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"><\/script>');
+        }
+    </script>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-background gradient-bg">
+                <div class="title-slide-content">
+                    <div class="logo-section">
+                        <img src="logo-dbkl.png" alt="Dewan Bandaraya Kuala Lumpur" class="dbkl-logo">
+                    </div>
+                    <h1 class="main-title">SISTEM NOTIFIKASI AMARAN BANJIR DBKL</h1>
+                    <div class="title-divider"></div>
+                    <h2 class="sub-title">Integrasi dengan Aplikasi Pay@KL</h2>
+                    <div class="date-info">
+                        <p>JABATAN PENGURUSAN MAKLUMAT</p>
+                        <p>27 Januari 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Objektif -->
+        <div class="slide" data-slide="2">
+            <div class="slide-header">
+                <h2>OBJEKTIF</h2>
+            </div>
+            <div class="slide-content">
+                <div class="content-card fade-in">
+                    <div class="icon-wrapper">
+                        <div class="icon">📱</div>
+                    </div>
+                    <div class="card-text">
+                        <p>Mewujudkan medium penyampaian maklumat amaran banjir melalui Aplikasi Mudah Alih (Push Notification)</p>
+                    </div>
+                </div>
+                <div class="content-card fade-in delay-1">
+                    <div class="icon-wrapper">
+                        <div class="icon">🔗</div>
+                    </div>
+                    <div class="card-text">
+                        <p>Mengintegrasikan sistem dengan Aplikasi Pay@KL milik DBKL yang mempunyai jumlah pengguna yang ramai</p>
+                    </div>
+                </div>
+                <div class="content-card fade-in delay-2">
+                    <div class="icon-wrapper">
+                        <div class="icon">🛡️</div>
+                    </div>
+                    <div class="card-text">
+                        <p>Meningkatkan kesiapsiagaan masyarakat terhadap ancaman banjir di Kuala Lumpur</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Pernyataan Masalah -->
+        <div class="slide" data-slide="3">
+            <div class="slide-header">
+                <h2>PERNYATAAN MASALAH</h2>
+            </div>
+            <div class="slide-content">
+                <div class="problem-container">
+                    <div class="problem-box">
+                        <div class="problem-icon">⚠️</div>
+                        <h3>Cabaran Semasa</h3>
+                        <ul class="problem-list">
+                            <li>Tiada penyampaian maklumat secara masa nyata berkaitan banjir di Kuala Lumpur melalui aplikasi mudah alih</li>
+                            <li>Maklumat amaran banjir tidak sampai dengan cepat kepada penduduk yang terjejas</li>
+                            <li>Keperluan untuk memanfaatkan platform sedia ada yang mempunyai jangkauan pengguna yang luas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Penyelesaian -->
+        <div class="slide" data-slide="4">
+            <div class="slide-header">
+                <h2>PENYELESAIAN YANG DICADANGKAN</h2>
+            </div>
+            <div class="slide-content">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-number">01</div>
+                        <h3>Portal Web Pay@KL</h3>
+                        <p>Menggunakan portal web Pay@KL sedia ada untuk penghantaran notifikasi amaran banjir</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-number">02</div>
+                        <h3>Modul Pengurusan Staff</h3>
+                        <p>Modul pengurusan staff ITIS untuk pentadbiran sistem amaran</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-number">03</div>
+                        <h3>Push Notification</h3>
+                        <p>Dari portal web Pay@KL terus ke aplikasi Pay@KL dalam telefon pengguna</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-number">04</div>
+                        <h3>Amaran Masa Nyata</h3>
+                        <p>Penyampaian maklumat amaran banjir secara segera kepada rakyat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Komponen Sistem -->
+        <div class="slide" data-slide="5">
+            <div class="slide-header">
+                <h2>KOMPONEN SISTEM</h2>
+            </div>
+            <div class="slide-content">
+                <div class="component-container">
+                    <div class="component-item">
+                        <div class="component-header">
+                            <div class="component-icon">🌐</div>
+                            <h3>Portal Web Pay@KL</h3>
+                        </div>
+                        <ul class="component-list">
+                            <li>Menggunakan portal web Pay@KL sedia ada</li>
+                            <li>Modul pengurusan staff ITIS</li>
+                            <li>Papan pemuka untuk pengurusan amaran banjir</li>
+                            <li>Fungsi blast notifikasi</li>
+                        </ul>
+                    </div>
+                    <div class="component-item">
+                        <div class="component-header">
+                            <div class="component-icon">📱</div>
+                            <h3>Aplikasi Pay@KL (Mobile Apps)</h3>
+                        </div>
+                        <ul class="component-list">
+                            <li>Menerima push notification dari portal web</li>
+                            <li>Penyampaian amaran banjir masa nyata</li>
+                            <li>Notifikasi terus ke telefon pengguna</li>
+                        </ul>
+                    </div>
+                    <div class="component-item">
+                        <div class="component-header">
+                            <div class="component-icon">🔐</div>
+                            <h3>Keselamatan & Pengurusan</h3>
+                        </div>
+                        <ul class="component-list">
+                            <li>Akses berasaskan peranan untuk staff ITIS</li>
+                            <li>Audit trail dan log aktiviti</li>
+                            <li>Kawalan pengguna berpusat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Aliran Sistem -->
+        <div class="slide" data-slide="6">
+            <div class="slide-header">
+                <h2>ALIRAN SISTEM</h2>
+            </div>
+            <div class="slide-content">
+                <div class="flow-container">
+                    <div class="flow-wrapper">
+                        <div class="flow-step">
+                            <div class="flow-icon">👤</div>
+                            <h3>Staff ITIS</h3>
+                            <p>Memantau situasi banjir dan membuat keputusan untuk blast notifikasi</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-icon">🌐</div>
+                            <h3>Portal Web Pay@KL</h3>
+                            <p>Staff ITIS login ke portal web Pay@KL dan create amaran banjir</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-icon">🚀</div>
+                            <h3>Push Notification</h3>
+                            <p>Sistem blast push notification secara automatik ke semua pengguna</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-icon">📱</div>
+                            <h3>Aplikasi Pay@KL</h3>
+                            <p>Notifikasi diterima di aplikasi Pay@KL dalam telefon pengguna</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-icon">✅</div>
+                            <h3>Pengguna Maklum</h3>
+                            <p>Rakyat menerima maklumat amaran banjir secara masa nyata</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Timeline -->
+        <div class="slide" data-slide="7">
+            <div class="slide-header">
+                <h2>TIMELINE PROJEK</h2>
+            </div>
+            <div class="slide-content">
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-box">22 Jan 2026</div>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-content">
+                            <h4>Sebut Harga dari Vendor</h4>
+                            <p>Penerimaan quotation daripada vendor</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-box">27 Jan 2026</div>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-content">
+                            <h4>Mesyuarat Arahan Perubahan (VO)</h4>
+                            <p>Perbincangan dan kelulusan VO</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-box">27 Jan 2026</div>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-content">
+                            <h4>Pembentangan Demo kepada Pengarah</h4>
+                            <p>Demo sistem kepada pihak pengurusan</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <div class="date-box">28 Jan 2026</div>
+                        </div>
+                        <div class="timeline-connector last"></div>
+                        <div class="timeline-content">
+                            <h4>Pembentangan kepada Datuk Bandar</h4>
+                            <p>Pembentangan akhir dan kelulusan projek</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Title Slide (Repeat) -->
+        <div class="slide" data-slide="8">
+            <div class="slide-background gradient-bg">
+                <div class="title-slide-content">
+                    <div class="logo-section">
+                        <img src="logo-dbkl.png" alt="Dewan Bandaraya Kuala Lumpur" class="dbkl-logo">
+                    </div>
+                    <h1 class="main-title">PERLAKSANAAN INISIATIF KERAJAAN DAN KESELAMATAN DIGITAL</h1>
+                    <div class="title-divider"></div>
+                    <h2 class="sub-title">Pelaporan Pra - JTICT</h2>
+                    <div class="date-info">
+                        <p>JABATAN PENGURUSAN MAKLUMAT</p>
+                        <p>27 Januari 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Pelan Pendigitalan -->
+        <div class="slide" data-slide="9">
+            <div class="slide-header">
+                <h2>PELAN PENDIGITALAN</h2>
+            </div>
+            <div class="slide-content">
+                <div class="content-card fade-in">
+                    <div class="card-text">
+                        <h3 style="margin-bottom: 15px;">Tindakan Ekonomi Digital Wilayah Persekutuan 2030</h3>
+                        <div style="margin-bottom: 20px;">
+                            <p><strong>Penyelaras:</strong> Puan Siti Noor Hamzah</p>
+                            <p><strong>PIC:</strong> En Ts Hariz Bin Muharam</p>
+                            <p style="margin-top: 10px;"><strong>Keperluan:</strong> Penambahan Sistem/Projek Digital DBKL untuk 2026 - 2030</p>
+                        </div>
+                        
+                        <div style="margin-top: 25px; overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+                                <thead>
+                                    <tr style="background-color: #5b7fbd; color: white;">
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">STATUS</th>
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">DBKL</th>
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">PPJ</th>
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">PL</th>
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">PPTG WPKL</th>
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">PPTGWP/JAYA</th>
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">PPTGWH LABUAN</th>
+                                        <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">JUMLAH</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">SIAP MENDAHULUI JADUAL</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">4</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; background-color: #fff3cd;">32</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">20</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold;">56<br><span style="font-size: 0.8em;">(53.42%)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">SIAP IKUT JADUAL</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">16</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">14</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">4</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">4</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold;">40<br><span style="font-size: 0.8em;">(27.4%)</span></td>
+                                    </tr>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">DALAM PERKSANAAN</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">2</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">2</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; background-color: #fff3cd;">9</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold;">13<br><span style="font-size: 0.8em;">(8.9%)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">BELUM MULA</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">2</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold;">2<br><span style="font-size: 0.8em;">(1.37%)</span></td>
+                                    </tr>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">TANGGUH</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; background-color: #fff3cd;">4</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold;">4<br><span style="font-size: 0.8em;">(2.74%)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">GUGUR</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">3</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">2</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">3</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 8px; text-align: center; border: 1px solid #ddd; font-weight: bold;">9<br><span style="font-size: 0.8em;">(6.16%)</span></td>
+                                    </tr>
+                                    <tr style="background-color: #5b7fbd; color: white; font-weight: bold;">
+                                        <td style="padding: 10px; border: 1px solid #ddd;">JUMLAH</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">46</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">50</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">40</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">8</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">1</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">146<br><span style="font-size: 0.8em;">(100%)</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Perkhidmatan End-to-End -->
+        <div class="slide" data-slide="10">
+            <div class="slide-header">
+                <h2>PERKHIDMATAN END TO END</h2>
+            </div>
+            <div class="slide-content">
+                <div class="content-card fade-in">
+                    <div class="card-text">
+                        <p><strong>Penyelaras:</strong> Puan Siti Noor Hamzah</p>
+                        <p><strong>PIC:</strong> En Muhammad Nazri Bin Ismail</p>
+                        <p style="margin-top: 15px;"><strong>Status:</strong></p>
+                        <p>Sasaran peningkatan pencapaian perkhidmatan E2E bagi KPI Tier 2 dan 3 tahun 2025 sebanyak 5% telah berjaya dicapai iaitu <strong style="color: #2ecc71;">5.43%</strong></p>
+                        
+                        <div style="margin-top: 25px; overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                                <thead>
+                                    <tr style="background-color: #34495e; color: white;">
+                                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">JABATAN/AGENSI PELAKSANAAN E2E</th>
+                                        <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">E2E</th>
+                                        <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">BE2E</th>
+                                        <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">JUMLAH</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="padding: 10px; border: 1px solid #ddd;">JWP-Jabatan Wilayah Persekutuan (JWP)</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">115</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;"><strong>115</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd; background-color: #e8f5e9;">JWP-Dewan Bandaraya Kuala Lumpur (DBKL)</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd; background-color: #e8f5e9;"><strong>170</strong></td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd; background-color: #e8f5e9;">0</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd; background-color: #e8f5e9;"><strong>170</strong></td>
+                                    </tr>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="padding: 10px; border: 1px solid #ddd;">JWP-Perbadanan Putrajaya (PPJ)</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">187</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;"><strong>187</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">JWP-Perbadanan Labuan (PL)</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">190</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;"><strong>190</strong></td>
+                                    </tr>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="padding: 10px; border: 1px solid #ddd;">JWP-Perbadanan Pembangunan Kampong Bharu</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">16</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;"><strong>16</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">JWP-Majlis Sukan Wilayah Persekutuan</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">27</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">0</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;"><strong>27</strong></td>
+                                    </tr>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <td style="padding: 10px; border: 1px solid #ddd;">Pejabat Tanah dan Galian WP Kuala Lumpur (PTGWPKL)</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">149</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">639</td>
+                                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;"><strong>788</strong></td>
+                                    </tr>
+                                    <tr style="background-color: #34495e; color: white; font-weight: bold;">
+                                        <td style="padding: 12px; border: 1px solid #ddd;">JUMLAH</td>
+                                        <td style="padding: 12px; text-align: center; border: 1px solid #ddd;">854</td>
+                                        <td style="padding: 12px; text-align: center; border: 1px solid #ddd;">639</td>
+                                        <td style="padding: 12px; text-align: center; border: 1px solid #ddd;">1493</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Sistem MyMesyuarat -->
+        <div class="slide" data-slide="11">
+            <div class="slide-header">
+                <h2>SISTEM MYMESYUARAT</h2>
+            </div>
+            <div class="slide-content">
+                <div class="content-card fade-in">
+                    <div class="icon-wrapper">
+                        <div class="icon">📋</div>
+                    </div>
+                    <div class="card-text">
+                        <p><strong>Penyelaras:</strong> Puan Siti Noor Hamzah</p>
+                        <p><strong>PIC:</strong> Pn NorBaizura Binti Mohd Nazar</p>
+                        <p><strong>Keperluan:</strong> Jumlah penggunaan mesyuarat menggunakan MyMesyuarat</p>
+                        
+                        <div style="margin-top: 20px;">
+                            <h3 style="margin-bottom: 15px;">Status:</h3>
+                            <ol style="line-height: 1.8; text-align: left; margin-left: 20px;">
+                                <li>Arahan Pemakaian Sistem MyMesyuarat oleh Pengurusan DBKL pada <strong>Januari 2024</strong></li>
+                                <li>Latihan Penggunaan Sistem MyMesyuarat kepada semua jabatan:
+                                    <ul style="margin-left: 25px; margin-top: 10px;">
+                                        <li>Sesi 1: 20 – 21 Mei 2024</li>
+                                        <li>Sesi 2: 6 – 7 Jun 2024</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top: 10px;">Jabatan DBKL yang menggunakan MyMesyuarat:
+                                    <ul style="margin-left: 25px; margin-top: 10px;">
+                                        <li>Jabatan Pengurusan Maklumat</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Closing -->
+        <div class="slide" data-slide="12">
+            <div class="slide-background gradient-bg">
+                <div class="closing-slide-content">
+                    <h1 class="closing-title">TERIMA KASIH</h1>
+                    <div class="title-divider"></div>
+                    <div class="contact-info">
+                        <p>Bahagian Teknologi Maklumat (JPM)</p>
+                        <p>Dewan Bandaraya Kuala Lumpur</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download PDF Button -->
+        <button class="pdf-btn" onclick="downloadPDF()" title="Print semua 12 slides ke PDF (Ctrl+P)">
+            <span>📄</span>
+        </button>
+
+        <!-- Navigation Controls -->
+        <div class="navigation">
+            <button class="nav-btn prev-btn" onclick="prevSlide()">
+                <span>‹</span>
+            </button>
+            <div class="slide-indicator">
+                <span class="current-slide">1</span> / <span class="total-slides">12</span>
+            </div>
+            <button class="nav-btn next-btn" onclick="nextSlide()">
+                <span>›</span>
+            </button>
+        </div>
+
+        <!-- Slide Dots -->
+        <div class="slide-dots">
+            <span class="dot active" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+            <span class="dot" onclick="goToSlide(3)"></span>
+            <span class="dot" onclick="goToSlide(4)"></span>
+            <span class="dot" onclick="goToSlide(5)"></span>
+            <span class="dot" onclick="goToSlide(6)"></span>
+            <span class="dot" onclick="goToSlide(7)"></span>
+            <span class="dot" onclick="goToSlide(8)"></span>
+            <span class="dot" onclick="goToSlide(9)"></span>
+            <span class="dot" onclick="goToSlide(10)"></span>
+            <span class="dot" onclick="goToSlide(11)"></span>
+            <span class="dot" onclick="goToSlide(12)"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

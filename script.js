@@ -1,6 +1,6 @@
 // Slide Navigation System
 let currentSlide = 1;
-const totalSlides = 14;
+const totalSlides = 12;
 
 // Initialize presentation
 document.addEventListener('DOMContentLoaded', () => {
@@ -244,13 +244,51 @@ document.querySelectorAll('.slide-content').forEach(content => {
 
 // Download PDF Function - Direct Print Method
 function downloadPDF() {
-    // Show notification
-    showNotification('📄 Print dialog akan muncul. Pilih "Save as PDF" dan enable "Background graphics"', 'success');
+    const instructions = `
+📄 CARA PRINT PDF - 14 SLIDES
+
+1. Print dialog akan muncul
+2. WAJIB enable settings ini:
+   ✅ Destination: Save as PDF
+   ✅ Layout: Landscape
+   ✅ Background graphics: ON
+   ✅ Pages: All
+   
+3. Klik "Save" untuk export PDF
+    `.trim();
     
-    // Small delay then trigger print
-    setTimeout(() => {
-        printToPDF();
-    }, 500);
+    if (confirm(instructions + '\n\nTeruskan ke print dialog?')) {
+        // FORCE all slides to be visible before print
+        const slides = document.querySelectorAll('.slide');
+        const container = document.querySelector('.presentation-container');
+        
+        console.log(`Preparing ${slides.length} slides for print...`);
+        
+        // Force container to allow stacking
+        if (container) {
+            container.classList.add('printing');
+        }
+        
+        // Force ALL slides active and visible
+        slides.forEach((slide, index) => {
+            slide.classList.add('active', 'printing');
+            console.log(`Slide ${index + 1} prepared`);
+        });
+        
+        // Small delay to let browser apply styles
+        setTimeout(() => {
+            console.log('Triggering print...');
+            window.print();
+            
+            // Cleanup after print dialog closes
+            setTimeout(() => {
+                slides.forEach(slide => slide.classList.remove('printing'));
+                if (container) container.classList.remove('printing');
+                // Restore current slide
+                showSlide(currentSlide);
+            }, 1000);
+        }, 300);
+    }
 }
 
 // Show notification
@@ -283,7 +321,7 @@ function showNotification(message, type) {
     }, 3000);
 }
 
-// Print to PDF Function - Shows ALL content perfectly - EXACTLY 14 PAGES
+// Print to PDF Function - Shows ALL content perfectly - EXACTLY 12 PAGES
 function printToPDF() {
     // Store original state
     const originalSlide = currentSlide;
@@ -298,13 +336,13 @@ function printToPDF() {
     if (slideDots) slideDots.style.display = 'none';
     if (pdfButton) pdfButton.style.display = 'none';
     
-    // Get all slides - SHOULD BE EXACTLY 14
+    // Get all slides - SHOULD BE EXACTLY 12
     const slides = document.querySelectorAll('.slide');
     
     // Debug: Log slide count
-    console.log(`Total slides for print: ${slides.length} (should be 14)`);
+    console.log(`Total slides for print: ${slides.length} (should be 12)`);
     
-    // Show ALL slides with ALL content for printing - EXACTLY 14 PAGES
+    // Show ALL slides with ALL content for printing - EXACTLY 12 PAGES
     slides.forEach((slide, index) => {
         // Make slide visible
         slide.classList.add('active');
@@ -692,32 +730,7 @@ function printToPDF() {
                     `;
                 }
             } else if (slideNum === '9') {
-                // Slide 9: Pelaksanaan Inisiatif Kerajaan (Carta)
-                slideContent.style.cssText += `
-                    padding: 1rem 2rem !important;
-                    overflow: visible !important;
-                    justify-content: center !important;
-                `;
-            } else if (slideNum === '10') {
-                // Slide 10: Timeline Projek (Repeat) - Same as Slide 7
-                slideContent.style.cssText += `
-                    padding: 0.8rem 2rem !important;
-                    justify-content: center !important;
-                `;
-                const timelineContainer = slide.querySelector('.timeline-container');
-                if (timelineContainer) {
-                    timelineContainer.style.cssText += `
-                        padding: 0 !important;
-                    `;
-                }
-                const timelineItemsList = slide.querySelectorAll('.timeline-item');
-                timelineItemsList.forEach((item, idx) => {
-                    item.style.cssText += `
-                        margin-bottom: ${idx === timelineItemsList.length - 1 ? '0' : '1rem'} !important;
-                    `;
-                });
-            } else if (slideNum === '11') {
-                // Slide 11: Pelan Pendigitalan (with table)
+                // Slide 9: Pelan Pendigitalan (with table)
                 slideContent.style.cssText += `
                     padding: 0.8rem 2rem !important;
                     overflow: visible !important;
@@ -736,8 +749,8 @@ function printToPDF() {
                         `;
                     });
                 }
-            } else if (slideNum === '12') {
-                // Slide 12: Perkhidmatan E2E (with table)
+            } else if (slideNum === '10') {
+                // Slide 10: Perkhidmatan E2E (with table)
                 slideContent.style.cssText += `
                     padding: 0.8rem 2rem !important;
                     overflow: visible !important;
@@ -756,8 +769,8 @@ function printToPDF() {
                         `;
                     });
                 }
-            } else if (slideNum === '13') {
-                // Slide 13: Sistem MyMesyuarat
+            } else if (slideNum === '11') {
+                // Slide 11: Sistem MyMesyuarat
                 slideContent.style.cssText += `
                     padding: 1rem 2rem !important;
                     overflow: visible !important;
@@ -770,8 +783,8 @@ function printToPDF() {
                         line-height: 1.6 !important;
                     `;
                 }
-            } else if (slideNum === '14') {
-                // Slide 14: Closing Slide
+            } else if (slideNum === '12') {
+                // Slide 12: Closing Slide
                 const closingSlideContent = slide.querySelector('.closing-slide-content');
                 if (closingSlideContent) {
                     closingSlideContent.style.cssText += `
@@ -921,7 +934,7 @@ style.textContent = `
         to { transform: rotate(360deg); }
     }
     
-    /* Print styles for PDF - All 14 slides */
+    /* Print styles for PDF - All 12 slides */
     @media print {
         /* Hide everything first */
         body * {

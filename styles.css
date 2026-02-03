@@ -64,6 +64,28 @@ body {
     z-index: 1;
 }
 
+/* Force ALL slides visible during print preparation */
+.presentation-container.printing {
+    position: static !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+.slide.printing {
+    position: static !important;
+    opacity: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    page-break-after: always !important;
+    transform: none !important;
+    overflow: visible !important;
+    background: white !important;
+}
+
 /* Gradient Background */
 .gradient-bg {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 50%, var(--gradient-end) 100%);
@@ -1676,51 +1698,55 @@ body {
         visibility: hidden !important;
     }
     
-    /* Reset body - prevent extra pages */
+    /* Reset body - ALLOW multi-page printing */
     body {
-        overflow: hidden !important;
+        overflow: visible !important;
         background: white !important;
         print-color-adjust: exact !important;
         -webkit-print-color-adjust: exact !important;
         color-adjust: exact !important;
         margin: 0 !important;
         padding: 0 !important;
-        page-break-before: avoid !important;
-        page-break-after: avoid !important;
+        position: static !important;
+        height: auto !important;
     }
     
-    /* Prevent HTML element from creating extra pages */
+    /* Allow HTML element for multi-page printing */
     html {
-        overflow: hidden !important;
+        overflow: visible !important;
         margin: 0 !important;
         padding: 0 !important;
+        height: auto !important;
     }
     
-    /* Container adjustments - prevent extra pages */
+    /* Container adjustments - CRITICAL for multi-page */
     .presentation-container {
-        overflow: hidden !important;
+        overflow: visible !important;
         height: auto !important;
-        position: relative !important;
+        position: static !important;
         page-break-before: avoid !important;
         page-break-after: avoid !important;
     }
     
-    /* Slide styles for printing - EXACTLY 8 PAGES */
+    /* Slide styles for printing - EXACTLY 14 PAGES */
     .slide {
-        position: relative !important;
+        position: static !important;
         opacity: 1 !important;
         display: flex !important;
         flex-direction: column !important;
-        page-break-after: always !important;
-        page-break-before: avoid !important;
-        page-break-inside: avoid !important;
         width: 100% !important;
         height: 100vh !important;
         min-height: 100vh !important;
         max-height: 100vh !important;
+        page-break-after: always !important;
+        page-break-before: avoid !important;
+        page-break-inside: avoid !important;
+        visibility: visible !important;
         background: white !important;
-        overflow: hidden !important;
+        overflow: visible !important;
         box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
     /* Last slide - NO page break after */
